@@ -62,15 +62,9 @@
     }
 
     .brand-mark {
-      display: grid;
       width: 34px;
       height: 34px;
-      place-items: center;
-      border: 1px solid var(--accent);
-      border-radius: 10px;
-      color: var(--accent);
-      font-size: 1.25rem;
-      line-height: 1;
+      border-radius: 8px;
     }
 
     nav { display: flex; gap: 1.25rem; }
@@ -200,19 +194,23 @@
     figure img { display: block; width: 100%; height: auto; border-radius: 19px; }
     figcaption { padding: .85rem .65rem .55rem; color: var(--muted); font-size: .87rem; }
 
+    #contact { padding: 3rem 0; }
+
     .contact {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 2rem;
-      padding: clamp(2rem, 5vw, 4rem);
+      padding: 1.4rem 1.6rem;
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: 16px;
       background: linear-gradient(125deg, var(--surface-2), var(--surface));
     }
 
-    .contact p { margin: .65rem 0 0; color: var(--muted); }
-    .contact a { flex: 0 0 auto; color: var(--accent); font-weight: 750; text-underline-offset: 4px; }
+    .contact .eyebrow { margin-bottom: .35rem; font-size: .68rem; }
+    .contact h2 { font-size: 1.2rem; letter-spacing: -.015em; }
+    .contact p { margin: .2rem 0 0; color: var(--muted); font-size: .86rem; }
+    .contact a { flex: 0 0 auto; color: var(--accent); font-size: .88rem; font-weight: 700; text-underline-offset: 4px; }
 
     footer {
       display: flex;
@@ -248,7 +246,7 @@
 <body>
   <header class="wrap">
     <a class="brand" href="#top" aria-label="RF Survey Companion home">
-      <span class="brand-mark" aria-hidden="true">⌁</span>
+      <img class="brand-mark" src="assets/app-icon.png" alt="" width="512" height="512">
       <span>RF Survey Companion</span>
     </a>
     <nav aria-label="Main navigation">
@@ -321,9 +319,6 @@
           <figure><img src="assets/screenshots/device-connection.jpg" alt="Connected tinySA Ultra device details" width="1080" height="2340" loading="lazy"><figcaption>USB connection and device capabilities</figcaption></figure>
           <figure><img src="assets/screenshots/remote-screen.jpg" alt="Live remote control showing the tinySA spectrum display" width="1080" height="2340" loading="lazy"><figcaption>Live analyzer screen and remote control</figcaption></figure>
           <figure><img src="assets/screenshots/survey-overview.jpg" alt="RF survey charts showing activity by frequency and over time" width="1080" height="2340" loading="lazy"><figcaption>Frequency activity and waterfall history</figcaption></figure>
-          <figure><img src="assets/screenshots/survey-detail.jpg" alt="Saved RF survey with acquisition summary and charts" width="1080" height="3371" loading="lazy"><figcaption>Saved survey details and sweep-point analysis</figcaption></figure>
-          <figure><img src="assets/screenshots/survey-latest.jpg" alt="RF survey waterfall scrolled to the latest readings" width="1080" height="2243" loading="lazy"><figcaption>Long-running survey activity</figcaption></figure>
-          <figure><img src="assets/screenshots/mapping-controls.jpg" alt="RF mapping controls and route overview" width="1080" height="2340" loading="lazy"><figcaption>Frequency-specific mapping controls</figcaption></figure>
           <figure><img src="assets/screenshots/mapping-route.jpg" alt="Saved route map colored by median signal level" width="1080" height="2340" loading="lazy"><figcaption>GPS route colored by signal level</figcaption></figure>
           <figure><img src="assets/screenshots/device-sd-card.jpg" alt="TinySA SD card file browser" width="1080" height="2340" loading="lazy"><figcaption>Analyzer SD-card file access</figcaption></figure>
         </div>
