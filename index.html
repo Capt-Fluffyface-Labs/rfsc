@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RF Survey Companion turns a tinySA into a practical Android field companion for remote control, RF surveys, mapping, and local exports.">
+  <meta name="theme-color" content="#08110f">
+  <title>RF Survey Companion — TinySA field companion</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08110f;
+      --surface: #101b18;
+      --surface-2: #172622;
+      --line: #2d4540;
+      --text: #eef7f4;
+      --muted: #a9bbb6;
+      --accent: #75dbce;
+      --accent-dark: #173d37;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 78% -10%, rgba(117, 219, 206, .13), transparent 35rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(calc(100% - 2rem), var(--max));
+      margin-inline: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      color: var(--text);
+      font-size: .92rem;
+      font-weight: 750;
+      letter-spacing: .04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      color: var(--accent);
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    nav { display: flex; gap: 1.25rem; }
+    nav a { color: var(--muted); font-size: .92rem; text-decoration: none; }
+    nav a:hover, nav a:focus-visible { color: var(--accent); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(270px, .6fr);
+      align-items: center;
+      gap: clamp(2.5rem, 7vw, 7rem);
+      min-height: min(760px, calc(100vh - 76px));
+      padding: 4rem 0 6rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 6.4rem);
+      font-weight: 700;
+      letter-spacing: -.055em;
+      line-height: .96;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin: 1.6rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+    }
+
+    .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: .7rem 1.15rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .button.primary { border-color: var(--accent); background: var(--accent); color: #06201c; }
+    .button:hover, .button:focus-visible { transform: translateY(-1px); filter: brightness(1.08); }
+
+    .phone {
+      position: relative;
+      width: min(100%, 350px);
+      margin-inline: auto;
+      padding: 9px;
+      overflow: hidden;
+      border: 1px solid #416059;
+      border-radius: 32px;
+      background: #020504;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .46);
+      transform: rotate(2deg);
+    }
+
+    .phone img { display: block; width: 100%; height: auto; border-radius: 24px; }
+
+    section { padding: 6rem 0; }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: .65fr 1fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 3rem;
+    }
+
+    h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.035em; line-height: 1.05; }
+    .section-heading p { max-width: 620px; margin: 0; color: var(--muted); font-size: 1.05rem; }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--line);
+    }
+
+    .feature { min-height: 220px; padding: clamp(1.5rem, 4vw, 2.5rem); background: var(--surface); }
+    .feature-number { color: var(--accent); font: 700 .78rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .feature h3 { margin: 2.5rem 0 .55rem; font-size: 1.25rem; }
+    .feature p { max-width: 470px; margin: 0; color: var(--muted); }
+
+    .gallery-shell {
+      margin-inline: calc((100vw - min(100vw - 2rem, var(--max))) / -2);
+      overflow: hidden;
+    }
+
+    .gallery {
+      display: grid;
+      grid-auto-columns: minmax(245px, 325px);
+      grid-auto-flow: column;
+      gap: 1.25rem;
+      overflow-x: auto;
+      padding: 1rem max(1rem, calc((100vw - var(--max)) / 2)) 2rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-color: var(--accent-dark) transparent;
+    }
+
+    figure {
+      margin: 0;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: #050908;
+      scroll-snap-align: start;
+    }
+
+    figure img { display: block; width: 100%; height: auto; border-radius: 19px; }
+    figcaption { padding: .85rem .65rem .55rem; color: var(--muted); font-size: .87rem; }
+
+    .contact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: clamp(2rem, 5vw, 4rem);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(125deg, var(--surface-2), var(--surface));
+    }
+
+    .contact p { margin: .65rem 0 0; color: var(--muted); }
+    .contact a { flex: 0 0 auto; color: var(--accent); font-weight: 750; text-underline-offset: 4px; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    footer p { margin: 0; }
+    footer a { text-underline-offset: 3px; }
+
+    @media (max-width: 720px) {
+      nav a:first-child { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 3rem; text-align: center; }
+      .hero-copy { margin-inline: auto; }
+      .actions { justify-content: center; }
+      .phone { width: min(78vw, 320px); transform: none; }
+      .section-heading { grid-template-columns: 1fr; align-items: start; }
+      .features { grid-template-columns: 1fr; }
+      .contact { align-items: flex-start; flex-direction: column; }
+      footer { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button:hover, .button:focus-visible { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="#top" aria-label="RF Survey Companion home">
+      <span class="brand-mark" aria-hidden="true">⌁</span>
+      <span>RF Survey Companion</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero wrap">
+      <div>
+        <p class="eyebrow">TinySA companion for Android</p>
+        <h1>Take your RF work into the field.</h1>
+        <p class="hero-copy">Connect your tinySA over USB, control its screen, collect repeatable spectrum surveys, and see how signal activity changes across time and location.</p>
+        <div class="actions">
+          <a class="button primary" href="#screenshots">See the app</a>
+          <a class="button" href="privacy/">Privacy policy</a>
+        </div>
+      </div>
+      <div class="phone">
+        <img src="assets/screenshots/device-connection.jpg" alt="RF Survey Companion showing a connected tinySA Ultra" width="1080" height="2340">
+      </div>
+    </div>
+
+    <section id="features" class="wrap">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Built for practical RF work</p>
+          <h2>More context from every sweep.</h2>
+        </div>
+        <p>RF Survey Companion extends a tinySA with phone-sized controls, durable survey records, and location-aware views—without pretending a swept analyzer is a real-time I/Q receiver.</p>
+      </div>
+
+      <div class="features">
+        <article class="feature">
+          <span class="feature-number">01</span>
+          <h3>Connect and control</h3>
+          <p>Detect compatible tinySA devices over USB, review model and firmware details, and remotely view and operate the analyzer screen.</p>
+        </article>
+        <article class="feature">
+          <span class="feature-number">02</span>
+          <h3>Run RF surveys</h3>
+          <p>Collect repeated scalar spectrum sweeps and inspect activity by frequency or over time with clear plots and waterfall history.</p>
+        </article>
+        <article class="feature">
+          <span class="feature-number">03</span>
+          <h3>Map signal levels</h3>
+          <p>Associate readings with phone GPS locations and review median signal level or above-threshold activity along a route.</p>
+        </article>
+        <article class="feature">
+          <span class="feature-number">04</span>
+          <h3>Keep your work portable</h3>
+          <p>Save surveys locally, revisit selected sweep points, access supported files on the analyzer SD card, and share or export when you choose.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="screenshots" class="wrap">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Inside the app</p>
+          <h2>A field notebook for your spectrum analyzer.</h2>
+        </div>
+        <p>Swipe through real app screens showing the device, survey, mapping, and file-management workflows.</p>
+      </div>
+
+      <div class="gallery-shell">
+        <div class="gallery" aria-label="RF Survey Companion screenshots">
+          <figure><img src="assets/screenshots/device-connection.jpg" alt="Connected tinySA Ultra device details" width="1080" height="2340" loading="lazy"><figcaption>USB connection and device capabilities</figcaption></figure>
+          <figure><img src="assets/screenshots/remote-screen.jpg" alt="Live remote control showing the tinySA spectrum display" width="1080" height="2340" loading="lazy"><figcaption>Live analyzer screen and remote control</figcaption></figure>
+          <figure><img src="assets/screenshots/survey-overview.jpg" alt="RF survey charts showing activity by frequency and over time" width="1080" height="2340" loading="lazy"><figcaption>Frequency activity and waterfall history</figcaption></figure>
+          <figure><img src="assets/screenshots/survey-detail.jpg" alt="Saved RF survey with acquisition summary and charts" width="1080" height="3371" loading="lazy"><figcaption>Saved survey details and sweep-point analysis</figcaption></figure>
+          <figure><img src="assets/screenshots/survey-latest.jpg" alt="RF survey waterfall scrolled to the latest readings" width="1080" height="2243" loading="lazy"><figcaption>Long-running survey activity</figcaption></figure>
+          <figure><img src="assets/screenshots/mapping-controls.jpg" alt="RF mapping controls and route overview" width="1080" height="2340" loading="lazy"><figcaption>Frequency-specific mapping controls</figcaption></figure>
+          <figure><img src="assets/screenshots/mapping-route.jpg" alt="Saved route map colored by median signal level" width="1080" height="2340" loading="lazy"><figcaption>GPS route colored by signal level</figcaption></figure>
+          <figure><img src="assets/screenshots/device-sd-card.jpg" alt="TinySA SD card file browser" width="1080" height="2340" loading="lazy"><figcaption>Analyzer SD-card file access</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="wrap">
+      <div class="contact">
+        <div>
+          <p class="eyebrow">Developer contact</p>
+          <h2>Capt. Fluffyface Labs</h2>
+          <p>Questions, feedback, or support requests are welcome.</p>
+        </div>
+        <a href="mailto:captfluffyface@proton.me">captfluffyface@proton.me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>© Capt. Fluffyface Labs</p>
+    <p><a href="privacy/">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
