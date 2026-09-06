@@ -3,21 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="RF Survey Companion turns a tinySA into a practical Android field companion for remote control, RF surveys, mapping, and local exports.">
-  <meta name="theme-color" content="#08110f">
+  <meta name="description" content="RF Survey Companion is an Android companion for tinySA devices with phone-based screen control, RF surveys, mapping, and local exports.">
+  <meta name="theme-color" content="#ffffff">
   <title>RF Survey Companion — TinySA field companion</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #08110f;
-      --surface: #101b18;
-      --surface-2: #172622;
-      --line: #2d4540;
-      --text: #eef7f4;
-      --muted: #a9bbb6;
-      --accent: #75dbce;
-      --accent-dark: #173d37;
-      --max: 1180px;
+      color-scheme: light;
+      --bg: #ffffff;
+      --surface: #f7f8f8;
+      --line: #d9dede;
+      --text: #182120;
+      --muted: #586462;
+      --accent: #087f73;
+      --max: 1080px;
     }
 
     * { box-sizing: border-box; }
@@ -26,9 +24,7 @@
 
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at 78% -10%, rgba(117, 219, 206, .13), transparent 35rem),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
@@ -45,7 +41,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 76px;
+      min-height: 68px;
+      border-bottom: 1px solid var(--line);
       gap: 1rem;
     }
 
@@ -54,11 +51,9 @@
       align-items: center;
       gap: .75rem;
       color: var(--text);
-      font-size: .92rem;
-      font-weight: 750;
-      letter-spacing: .04em;
+      font-size: 1rem;
+      font-weight: 700;
       text-decoration: none;
-      text-transform: uppercase;
     }
 
     .brand-mark {
@@ -69,15 +64,14 @@
 
     nav { display: flex; gap: 1.25rem; }
     nav a { color: var(--muted); font-size: .92rem; text-decoration: none; }
-    nav a:hover, nav a:focus-visible { color: var(--accent); }
+    nav a:hover, nav a:focus-visible { color: var(--text); text-decoration: underline; }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(270px, .6fr);
+      grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
       align-items: center;
-      gap: clamp(2.5rem, 7vw, 7rem);
-      min-height: min(760px, calc(100vh - 76px));
-      padding: 4rem 0 6rem;
+      gap: clamp(2.5rem, 7vw, 6rem);
+      padding: 4rem 0;
     }
 
     .eyebrow {
@@ -90,80 +84,58 @@
     }
 
     h1 {
-      max-width: 760px;
+      max-width: 620px;
       margin: 0;
-      font-size: clamp(3rem, 7vw, 6.4rem);
-      font-weight: 700;
-      letter-spacing: -.055em;
-      line-height: .96;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 650;
+      letter-spacing: -.035em;
+      line-height: 1.08;
     }
 
     .hero-copy {
       max-width: 650px;
-      margin: 1.6rem 0 0;
+      margin: 1.25rem 0 0;
       color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      font-size: 1.08rem;
     }
-
-    .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: .7rem 1.15rem;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      color: var(--text);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .button.primary { border-color: var(--accent); background: var(--accent); color: #06201c; }
-    .button:hover, .button:focus-visible { transform: translateY(-1px); filter: brightness(1.08); }
 
     .phone {
       position: relative;
-      width: min(100%, 350px);
+      width: min(100%, 310px);
       margin-inline: auto;
-      padding: 9px;
+      padding: 10px;
       overflow: hidden;
-      border: 1px solid #416059;
-      border-radius: 32px;
-      background: #020504;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, .46);
-      transform: rotate(2deg);
+      border: 1px solid #cbd1d0;
+      border-radius: 30px;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(24, 33, 32, .1);
     }
 
     .phone img { display: block; width: 100%; height: auto; border-radius: 24px; }
 
-    section { padding: 6rem 0; }
+    section { padding: 3.5rem 0; }
 
     .section-heading {
       display: grid;
-      grid-template-columns: .65fr 1fr;
-      gap: 2rem;
-      align-items: end;
-      margin-bottom: 3rem;
+      grid-template-columns: 1fr;
+      gap: .8rem;
+      align-items: start;
+      margin-bottom: 2rem;
     }
 
-    h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.035em; line-height: 1.05; }
-    .section-heading p { max-width: 620px; margin: 0; color: var(--muted); font-size: 1.05rem; }
+    h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.02em; line-height: 1.2; }
+    .section-heading p { max-width: 760px; margin: 0; color: var(--muted); }
 
     .features {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: var(--line);
+      gap: 0 2.5rem;
+      border-bottom: 1px solid var(--line);
     }
 
-    .feature { min-height: 220px; padding: clamp(1.5rem, 4vw, 2.5rem); background: var(--surface); }
-    .feature-number { color: var(--accent); font: 700 .78rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
-    .feature h3 { margin: 2.5rem 0 .55rem; font-size: 1.25rem; }
+    .feature { padding: 1.5rem 0; border-top: 1px solid var(--line); background: var(--bg); }
+    .feature-number { color: var(--muted); font: 600 .76rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .feature h3 { margin: .8rem 0 .35rem; font-size: 1.08rem; }
     .feature p { max-width: 470px; margin: 0; color: var(--muted); }
 
     .gallery-shell {
@@ -179,19 +151,19 @@
       overflow-x: auto;
       padding: 1rem max(1rem, calc((100vw - var(--max)) / 2)) 2rem;
       scroll-snap-type: x mandatory;
-      scrollbar-color: var(--accent-dark) transparent;
+      scrollbar-color: #aeb8b6 transparent;
     }
 
     figure {
       margin: 0;
-      padding: 8px;
+      padding: 7px;
       border: 1px solid var(--line);
-      border-radius: 26px;
-      background: #050908;
+      border-radius: 12px;
+      background: #ffffff;
       scroll-snap-align: start;
     }
 
-    figure img { display: block; width: 100%; height: auto; border-radius: 19px; }
+    figure img { display: block; width: 100%; height: auto; border-radius: 7px; }
     figcaption { padding: .85rem .65rem .55rem; color: var(--muted); font-size: .87rem; }
 
     #contact { padding: 3rem 0; }
@@ -201,16 +173,15 @@
       align-items: center;
       justify-content: space-between;
       gap: 2rem;
-      padding: 1.4rem 1.6rem;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: linear-gradient(125deg, var(--surface-2), var(--surface));
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     .contact .eyebrow { margin-bottom: .35rem; font-size: .68rem; }
     .contact h2 { font-size: 1.2rem; letter-spacing: -.015em; }
     .contact p { margin: .2rem 0 0; color: var(--muted); font-size: .86rem; }
-    .contact a { flex: 0 0 auto; color: var(--accent); font-size: .88rem; font-weight: 700; text-underline-offset: 4px; }
+    .contact a { flex: 0 0 auto; color: var(--accent); font-size: .88rem; text-underline-offset: 4px; }
 
     footer {
       display: flex;
@@ -226,12 +197,9 @@
     footer a { text-underline-offset: 3px; }
 
     @media (max-width: 720px) {
-      nav a:first-child { display: none; }
-      .hero { grid-template-columns: 1fr; padding-top: 3rem; text-align: center; }
-      .hero-copy { margin-inline: auto; }
-      .actions { justify-content: center; }
-      .phone { width: min(78vw, 320px); transform: none; }
-      .section-heading { grid-template-columns: 1fr; align-items: start; }
+      nav { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 3rem; text-align: left; }
+      .phone { width: min(78vw, 310px); }
       .features { grid-template-columns: 1fr; }
       .contact { align-items: flex-start; flex-direction: column; }
       footer { flex-direction: column; }
@@ -239,7 +207,6 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .button:hover, .button:focus-visible { transform: none; }
     }
   </style>
 </head>
@@ -253,19 +220,15 @@
       <a href="#features">Features</a>
       <a href="#screenshots">Screenshots</a>
       <a href="#contact">Contact</a>
+      <a href="privacy/">Privacy</a>
     </nav>
   </header>
 
   <main id="top">
     <div class="hero wrap">
       <div>
-        <p class="eyebrow">TinySA companion for Android</p>
-        <h1>Take your RF work into the field.</h1>
+        <h1>RF Survey Companion</h1>
         <p class="hero-copy">Connect your tinySA over USB, control its screen, collect repeatable spectrum surveys, and see how signal activity changes across time and location.</p>
-        <div class="actions">
-          <a class="button primary" href="#screenshots">See the app</a>
-          <a class="button" href="privacy/">Privacy policy</a>
-        </div>
       </div>
       <div class="phone">
         <img src="assets/screenshots/device-connection.jpg" alt="RF Survey Companion showing a connected tinySA Ultra" width="1080" height="2340">
@@ -274,10 +237,7 @@
 
     <section id="features" class="wrap">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow">Built for practical RF work</p>
-          <h2>More context from every sweep.</h2>
-        </div>
+        <h2>What it does</h2>
         <p>RF Survey Companion extends a tinySA with phone-sized controls, durable survey records, and location-aware views—without pretending a swept analyzer is a real-time I/Q receiver.</p>
       </div>
 
@@ -285,7 +245,7 @@
         <article class="feature">
           <span class="feature-number">01</span>
           <h3>Connect and control</h3>
-          <p>Detect compatible tinySA devices over USB, review model and firmware details, and remotely view and operate the analyzer screen.</p>
+          <p>Detect compatible tinySA devices over USB, review model and firmware details, and view and operate the analyzer screen from your phone.</p>
         </article>
         <article class="feature">
           <span class="feature-number">02</span>
@@ -307,10 +267,7 @@
 
     <section id="screenshots" class="wrap">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow">Inside the app</p>
-          <h2>A field notebook for your spectrum analyzer.</h2>
-        </div>
+        <h2>A field companion for your spectrum analyzer.</h2>
         <p>Swipe through real app screens showing the device, survey, mapping, and file-management workflows.</p>
       </div>
 
@@ -328,8 +285,8 @@
     <section id="contact" class="wrap">
       <div class="contact">
         <div>
-          <p class="eyebrow">Developer contact</p>
-          <h2>Capt. Fluffyface Labs</h2>
+          <h2>Developer contact</h2>
+          <p>Capt. Fluffyface Labs</p>
           <p>Questions, feedback, or support requests are welcome.</p>
         </div>
         <a href="mailto:captfluffyface@proton.me">captfluffyface@proton.me</a>
