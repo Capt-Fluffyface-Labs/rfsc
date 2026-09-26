@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0P46Y634H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D0P46Y634H');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Use a tinySA and RF Survey Companion to map sampled signal levels along a route, understand GPS-linked samples, and inspect the saved frequency map.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://capt-fluffyface-labs.github.io/rfsc/guides/route-mapping/">
+  <link rel="stylesheet" href="../../assets/guides.css">
+  <title>How to map signal levels with a tinySA | RF Survey Companion</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../../">RF Survey Companion</a>
+      <nav class="site-nav" aria-label="Site navigation">
+        <a href="../../">App</a>
+        <a href="../../#guides">Guides</a>
+        <a href="https://play.google.com/store/apps/details?id=com.captfluffyface.rfsurveycompanion">Google Play</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="breadcrumbs"><a href="../../">RF Survey Companion</a> / <a href="../../#guides">Guides</a> / Route mapping</p>
+    <p class="eyebrow">Mapping guide</p>
+    <h1>How to map signal levels along a route with a tinySA</h1>
+    <p class="lead">Mapping pairs sequential tinySA spectrum sweeps with qualifying phone locations. It can show where the received level at a selected sweep point was higher or lower along your route.</p>
+
+    <div class="article-body">
+      <h2>1. Plan a repeatable route</h2>
+      <p>Pick a target frequency and a route you can cover safely. Keep the antenna orientation, height, and signal path as consistent as practical. Route maps can change with reflections, obstructions, and antenna handling; a bright cell alone does not locate a transmitter.</p>
+      <p>Connect the analyzer in <strong>Device</strong>, then open <strong>Map → New</strong>. Enter a mapping name, <strong>Target frequency</strong>, and <strong>Capture span</strong>. The target must lie within the captured range. Choose RBW and supported attenuation or LNA settings, and add setup notes if you expect to compare routes.</p>
+
+      <h2>2. Watch GPS quality while collecting</h2>
+      <p>Tap <strong>Start Mapping</strong>. The app allows collection even when GPS quality is low. By default, a fix must have accuracy no worse than <strong>25 m</strong> and be no older than <strong>10 s</strong> to be associated with a sample. Other sweeps are saved without a location, so the total sample count can exceed the number shown on the map.</p>
+      <p>Give the phone a clear view of the sky where possible and watch the live GPS status. If location quality degrades, you can continue collecting, pause, or finish; an unlocated sample is not silently turned into a map point. The analyzer also samples each frequency in sequence, so distance between mapped readings depends on sweep and save time as well as your speed.</p>
+
+      <h2>3. Read the saved map</h2>
+      <p>Tap <strong>Finish Mapping</strong>, then open the project from <strong>Map → Saved</strong>. Use <strong>Sweep point to map</strong> to select a recorded frequency. The map groups located samples into 25 m cells. Its default color represents median received level at that sweep point; an optional layer shows the percentage of samples at or above a chosen dBm threshold.</p>
+      <p>Check the project's located and unlocated counts before drawing conclusions. A cell may represent only a few samples, and a gap may mean the phone lacked a qualifying location fix. Compare routes only when frequency, analyzer settings, antenna setup, and measurement conditions are comparable.</p>
+      <p class="note"><strong>Interpretation limit:</strong> these are sampled power levels at the analyzer input, not a continuous RF recording or a calibrated estimate of transmitter position. The threshold layer is an analysis of recorded samples, not a compliance result.</p>
+
+      <figure>
+        <img src="../../assets/screenshots/mapping-route.jpg" alt="Saved mapping route colored by received signal level" width="1080" height="2340" loading="lazy">
+        <figcaption>A saved route map in RF Survey Companion.</figcaption>
+      </figure>
+      <p><a href="https://play.google.com/store/apps/details?id=com.captfluffyface.rfsurveycompanion">Get RF Survey Companion on Google Play</a> to record and inspect a route with a compatible tinySA.</p>
+    </div>
+
+    <aside class="related" aria-label="Related guides">
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="../stationary-survey/">Run a repeatable tinySA site survey</a></li>
+        <li><a href="../usb-connection/">Connect a tinySA to Android over USB OTG</a></li>
+      </ul>
+    </aside>
+  </main>
+  <footer class="site-footer"><div class="wrap"><p>© Capt. Fluffyface Labs</p><p><a href="../../privacy/">Privacy Policy</a></p></div></footer>
+</body>
+</html>

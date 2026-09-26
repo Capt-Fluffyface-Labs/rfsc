@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0P46Y634H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D0P46Y634H');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Troubleshoot tinySA USB OTG connection to RF Survey Companion on Android: device discovery, USB permission, cables, and interrupted connections.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://capt-fluffyface-labs.github.io/rfsc/guides/usb-connection/">
+  <link rel="stylesheet" href="../../assets/guides.css">
+  <title>tinySA USB OTG connection guide for Android | RF Survey Companion</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../../">RF Survey Companion</a>
+      <nav class="site-nav" aria-label="Site navigation">
+        <a href="../../">App</a>
+        <a href="../../#guides">Guides</a>
+        <a href="https://play.google.com/store/apps/details?id=com.captfluffyface.rfsurveycompanion">Google Play</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="breadcrumbs"><a href="../../">RF Survey Companion</a> / <a href="../../#guides">Guides</a> / USB connection</p>
+    <p class="eyebrow">Connection guide</p>
+    <h1>Connect a tinySA to Android over USB OTG</h1>
+    <p class="lead">RF Survey Companion talks to a compatible tinySA through Android USB host mode. Use this sequence to separate device discovery, permission, and analyzer communication problems.</p>
+
+    <div class="article-body">
+      <h2>Connect the analyzer</h2>
+      <ol>
+        <li>Power the analyzer and connect it to a phone that supports USB host/OTG using an adapter and a USB cable that carries data.</li>
+        <li>Open RF Survey Companion's <strong>Device</strong> tab and tap <strong>Refresh USB devices</strong> if the analyzer is not listed.</li>
+        <li>Tap <strong>Connect</strong> on the analyzer's device card. If Android asks for USB access, approve the prompt. The app then reads the analyzer's model, firmware, and supported commands.</li>
+      </ol>
+      <p>Android's <a href="https://developer.android.com/develop/connectivity/usb/host">USB host documentation</a> explains why the phone must support host mode and why an app needs permission to communicate with a selected device.</p>
+
+      <h2>If no USB device appears</h2>
+      <ul>
+        <li>Check that the analyzer is powered, its USB connector is fully seated, and the phone's adapter supports USB OTG/host operation.</li>
+        <li>Try a known data-capable cable and a direct connection without a hub. A charging-only cable cannot carry the USB data the app needs.</li>
+        <li>Disconnect and reconnect the analyzer, then tap <strong>Refresh USB devices</strong> again. If Android still reports no device, discovery has failed before the app can talk to the analyzer.</li>
+      </ul>
+
+      <h2>If the device appears but Connect fails</h2>
+      <p>Check the exact message on the Device screen. If USB permission was denied, reconnect and retry <strong>Connect</strong>, then approve Android's permission prompt. If permission succeeds but identification fails, try a stable cable and a fully powered analyzer. Device model, firmware, and USB serial behavior can affect compatibility; being visible to Android does not by itself prove that analyzer commands will work.</p>
+      <p>If a collection is interrupted by a cable disconnect, reconnect the <em>same analyzer</em> and follow the app's reconnect status. A paused collection is preserved while the app waits for a valid connection. Avoid starting a new collection until the existing session is resolved.</p>
+
+      <h2>When you need support</h2>
+      <p>Record the analyzer model, firmware version, Android version, and the exact error message. In <strong>Settings → Report a problem</strong>, you can review a local diagnostic report and choose whether to share it. Reports are not sent automatically. Send the relevant details to <a href="mailto:captfluffyface@proton.me">Capt. Fluffyface Labs</a> if the problem continues.</p>
+      <p class="note"><strong>Demo mode:</strong> the optional demo analyzer lets you explore the app without USB hardware. A successful demo connection does not verify phone, cable, or tinySA compatibility.</p>
+
+      <figure>
+        <img src="../../assets/screenshots/device-connection.jpg" alt="Device screen showing a connected tinySA and its details" width="1080" height="2340" loading="lazy">
+        <figcaption>The Device screen shows connected analyzer information.</figcaption>
+      </figure>
+      <p><a href="https://play.google.com/store/apps/details?id=com.captfluffyface.rfsurveycompanion">Get RF Survey Companion on Google Play</a> to connect and inspect a compatible tinySA on Android.</p>
+    </div>
+
+    <aside class="related" aria-label="Related guides">
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="../stationary-survey/">Run a repeatable tinySA site survey</a></li>
+        <li><a href="../route-mapping/">Map signal levels along a route</a></li>
+      </ul>
+    </aside>
+  </main>
+  <footer class="site-footer"><div class="wrap"><p>© Capt. Fluffyface Labs</p><p><a href="../../privacy/">Privacy Policy</a></p></div></footer>
+</body>
+</html>

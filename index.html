@@ -155,6 +155,12 @@
     .feature h3 { margin: .8rem 0 .35rem; font-size: 1.08rem; }
     .feature p { max-width: 470px; margin: 0; color: var(--muted); }
 
+    .guides { border-bottom: 1px solid var(--line); }
+    .guide { padding: 1.35rem 0; border-top: 1px solid var(--line); }
+    .guide h3 { margin: 0 0 .3rem; font-size: 1.1rem; }
+    .guide h3 a { color: var(--accent); text-underline-offset: 3px; }
+    .guide p { max-width: 760px; margin: 0; color: var(--muted); }
+
     .gallery-shell {
       margin-inline: calc((100vw - min(100vw - 2rem, var(--max))) / -2);
       overflow: hidden;
@@ -235,6 +241,7 @@
     </a>
     <nav aria-label="Main navigation">
       <a href="#features">Features</a>
+      <a href="#guides">Guides</a>
       <a href="#screenshots">Screenshots</a>
       <a href="#contact">Contact</a>
       <a href="privacy/">Privacy</a>
@@ -279,6 +286,27 @@
           <span class="feature-number">04</span>
           <h3>Keep your work portable</h3>
           <p>Save surveys locally, revisit selected sweep points, access supported files on the analyzer SD card, and share or export when you choose.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="guides" class="wrap">
+      <div class="section-heading">
+        <h2>Field guides</h2>
+        <p>Practical setup and interpretation notes for tinySA measurements with RF Survey Companion.</p>
+      </div>
+      <div class="guides">
+        <article class="guide">
+          <h3><a href="guides/stationary-survey/">Run a repeatable tinySA site survey</a></h3>
+          <p>Choose a capture range and threshold, collect sequential sweeps, and read the activity plots with their limits in mind.</p>
+        </article>
+        <article class="guide">
+          <h3><a href="guides/route-mapping/">Map signal levels along a route</a></h3>
+          <p>Set a target frequency, understand GPS-linked and unlocated samples, and inspect the saved map.</p>
+        </article>
+        <article class="guide">
+          <h3><a href="guides/usb-connection/">Connect a tinySA to Android over USB OTG</a></h3>
+          <p>Work through device discovery, USB permission, and common connection failures.</p>
         </article>
       </div>
     </section>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0P46Y634H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D0P46Y634H');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Set up a stationary tinySA spectrum survey in RF Survey Companion, collect repeatable sweeps, and interpret threshold activity and revisit timing.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://capt-fluffyface-labs.github.io/rfsc/guides/stationary-survey/">
+  <link rel="stylesheet" href="../../assets/guides.css">
+  <title>How to run a repeatable tinySA site survey | RF Survey Companion</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../../">RF Survey Companion</a>
+      <nav class="site-nav" aria-label="Site navigation">
+        <a href="../../">App</a>
+        <a href="../../#guides">Guides</a>
+        <a href="https://play.google.com/store/apps/details?id=com.captfluffyface.rfsurveycompanion">Google Play</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="breadcrumbs"><a href="../../">RF Survey Companion</a> / <a href="../../#guides">Guides</a> / Stationary survey</p>
+    <p class="eyebrow">Survey guide</p>
+    <h1>How to run a repeatable tinySA site survey</h1>
+    <p class="lead">A stationary survey records repeated scalar spectrum sweeps at one operator-declared site. Use it to see how sampled signal activity changes across frequency and time.</p>
+
+    <div class="article-body">
+      <h2>1. Keep the measurement setup consistent</h2>
+      <p>Choose a site and keep the analyzer, antenna, cable, and antenna position as steady as practical. Record any antenna or signal-path details you will need when comparing runs. If a strong signal may overload the input, check the analyzer setup and use appropriate attenuation or filtering before interpreting the trace.</p>
+      <p>Connect the tinySA in the app's <strong>Device</strong> tab. Then open <strong>Survey → New</strong>. If you need help with the connection, see the <a href="../usb-connection/">USB OTG guide</a>.</p>
+
+      <h2>2. Choose the capture settings</h2>
+      <ol>
+        <li>Name the survey and set <strong>Center frequency</strong> and <strong>Capture span</strong> so the frequencies of interest fit within the displayed capture range.</li>
+        <li>Choose <strong>RBW</strong>. A fixed setting helps when comparing runs. With Auto RBW, the applied bandwidth may not be reported, which limits comparability and some statistical qualification.</li>
+        <li>Set input attenuation and LNA only when those controls are available for your device and input path. Enabling LNA sets input attenuation to 0 dB in the app.</li>
+        <li>Review the <strong>Activity threshold</strong>. It is a power level at the analyzer input, in dBm, used to count active sweep points. It is not a universal noise threshold or a regulatory limit.</li>
+      </ol>
+      <p><strong>Record site location</strong> requests one optional phone location fix when the survey starts. It does not verify that the analyzer remains stationary. The optional measurement metadata fields let you keep notes on the antenna, cable loss, and external attenuation.</p>
+      <p>For a different frequency detail versus collection speed tradeoff, <strong>Settings → Collection scan points</strong> offers 121, 290, or 450 points, subject to the connected device's supported maximum. This setting applies to collection sweeps, not the analyzer's own display sweep points.</p>
+
+      <h2>3. Collect and inspect</h2>
+      <p>Tap <strong>Start Survey</strong> and let several sweeps finish. Collection is sequential: the next sweep starts after the previous sweep and its save complete. The actual revisit time can vary, so do not assume a fixed sampling interval. Use <strong>Pause</strong> and <strong>Resume</strong> if needed, then <strong>Stop Survey</strong> to finish.</p>
+      <p>Open <strong>Survey → Saved</strong> and select the project. The results show frequency activity and a time history. A displayed activity percentage is the share of valid recorded samples at a frequency that met or exceeded the selected threshold. Change the threshold in the saved result to test how that interpretation changes.</p>
+      <p class="note"><strong>Interpretation limit:</strong> a swept analyzer observes each frequency only during its sweep. A short transmission between visits can be missed. Activity and occupancy results describe the recorded samples; they are not continuous monitoring or compliance findings.</p>
+
+      <figure>
+        <img src="../../assets/screenshots/survey-overview.jpg" alt="Saved survey view showing frequency activity and time history" width="1080" height="2340" loading="lazy">
+        <figcaption>Saved survey results in RF Survey Companion.</figcaption>
+      </figure>
+      <p><a href="https://play.google.com/store/apps/details?id=com.captfluffyface.rfsurveycompanion">Get RF Survey Companion on Google Play</a> to collect and review these surveys with a compatible tinySA.</p>
+    </div>
+
+    <aside class="related" aria-label="Related guides">
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="../route-mapping/">Map signal levels along a route</a></li>
+        <li><a href="../usb-connection/">Connect a tinySA to Android over USB OTG</a></li>
+      </ul>
+    </aside>
+  </main>
+  <footer class="site-footer"><div class="wrap"><p>© Capt. Fluffyface Labs</p><p><a href="../../privacy/">Privacy Policy</a></p></div></footer>
+</body>
+</html>
